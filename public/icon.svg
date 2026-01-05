@@ -1,0 +1,7 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M70 90C70 84.4772 65.5228 80 60 80H40C34.4772 80 30 84.4772 30 90V95H70V90Z" fill="currentColor"/>
+<path d="M50 80V35" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+<path d="M50 45C63.8071 45 75 33.8071 75 20C75 6.19288 63.8071 -5 50 -5C36.1929 -5 25 6.19288 25 20C25 33.8071 36.1929 45 50 45Z" fill="currentColor"/>
+<path d="M35 30C39.4183 30 43 26.4183 43 22C43 17.5817 39.4183 14 35 14C30.5817 14 27 17.5817 27 22C27 26.4183 30.5817 30 35 30Z" fill="hsl(var(--background))"/>
+<path d="M60 35C64.4183 35 68 31.4183 68 27C68 22.5817 64.4183 19 60 19C55.5817 19 52 22.5817 52 27C52 31.4183 55.5817 35 60 35Z" fill="hsl(var(--background))"/>
+</svg>

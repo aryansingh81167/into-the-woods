@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 48 33% 97%; /* Off-white, like linen */
+    --foreground: 90 10% 25%; /* Dark charcoal for text */
+    --card: 48 33% 100%; /* Pure white for cards */
+    --card-foreground: 90 10% 25%;
+    --popover: 48 33% 97%;
+    --popover-foreground: 90 10% 25%;
+    --primary: 95 45% 60%; /* Vibrant lime green from sofa */
+    --primary-foreground: 90 10% 15%;
+    --secondary: 95 20% 35%; /* Dark, muted green for headings */
+    --secondary-foreground: 48 33% 98%;
+    --muted: 90 15% 90%;
+    --muted-foreground: 90 10% 45%;
+    --accent: 95 25% 85%; /* Soft sage green from ad background */
+    --accent-foreground: 90 10% 25%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 95 20% 88%;
+    --input: 90 15% 94%;
+    --ring: 95 45% 60%;
+    --radius: 0.5rem;
+    --chart-1: 95 45% 60%;
+    --chart-2: 95 35% 70%;
+    --chart-3: 95 25% 80%;
+    --chart-4: 95 20% 35%;
+    --chart-5: 90 10% 25%;
+  }
+
+  .dark {
+    --background: 90 10% 12%; /* Very dark charcoal */
+    --foreground: 90 15% 88%;
+    --card: 90 10% 16%;
+    --card-foreground: 90 15% 90%;
+    --popover: 90 10% 16%;
+    --popover-foreground: 90 15% 90%;
+    --primary: 95 45% 60%; /* Keep vibrant green */
+    --primary-foreground: 90 10% 10%;
+    --secondary: 95 25% 85%; /* Soft sage for headings */
+    --secondary-foreground: 90 10% 10%;
+    --muted: 90 10% 25%;
+    --muted-foreground: 90 15% 65%;
+    --accent: 95 35% 40%;
+    --accent-foreground: 90 15% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 90 10% 25%;
+    --input: 90 10% 25%;
+    --ring: 95 45% 60%;
+    --chart-1: 95 45% 60%;
+    --chart-2: 95 35% 70%;
+    --chart-3: 95 25% 80%;
+    --chart-4: 95 20% 35%;
+    --chart-5: 90 15% 88%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  main {
+    @apply pt-0;
+  }
+  h1, h2, h3, h4, h5, h6, .font-headline {
+    @apply text-secondary;
+  }
+}

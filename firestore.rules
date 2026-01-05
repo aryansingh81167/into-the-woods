@@ -1,0 +1,107 @@
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // --- Helper Functions ---
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+    function getUserData(userId) {
+      return get(/databases/$(database)/documents/users/$(userId)).data;
+    }
+    
+    function isAdmin() {
+        return isSignedIn() && getUserData(request.auth.uid).role == 'admin';
+    }
+
+    function isApprovedVendor() {
+        return isSignedIn() && getUserData(request.auth.uid).role == 'vendor' && getUserData(request.auth.uid).vendorStatus == 'approved';
+    }
+
+    function isResourceOwner(data) {
+        return request.auth.uid == data.sellerId;
+    }
+    
+    // --- User Rules ---
+    match /users/{userId} {
+      // Admins can read/write any user profile and list all users.
+      allow list, read, write: if isAdmin();
+      
+      // Users can get their own profile.
+      allow get: if isSignedIn();
+      
+      // Users can update their own non-critical profile info.
+      allow update: if isOwner(userId) && request.resource.data.keys().hasOnly(['userName', 'profilePicture', 'location', 'bio']);
+      
+      // Users can request to become a vendor.
+      allow update: if isOwner(userId) 
+                    && resource.data.role == 'user'
+                    && request.resource.data.role == 'vendor'
+                    && request.resource.data.vendorStatus == 'pending'
+                    && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['role', 'vendorStatus']);
+
+      // FOR TESTING ONLY: Allow a user to make themselves an admin if they are not already one.
+      allow update: if isOwner(userId) 
+                    && resource.data.role != 'admin'
+                    && request.resource.data.role == 'admin' 
+                    && request.resource.data.keys().hasOnly(['role']);
+    }
+    
+    // --- Vendor Application Rules ---
+    match /vendorApplications/{applicationId} {
+      // Users can create their own application.
+      allow create: if isSignedIn() && request.resource.data.userId == request.auth.uid;
+      
+      // Admins can read and update applications (to approve/reject them).
+      allow read, update: if isAdmin();
+    }
+
+    // --- Product/Plant Listing Rules ---
+    match /plantListings/{plantListingId} {
+      // Admins can perform any action on any product.
+      allow read, write: if isAdmin();
+      
+      // Public can only read approved listings.
+      allow get, list: if resource.data.status == 'approved';
+
+      // Approved vendors can create listings (status must be pending).
+      allow create: if isApprovedVendor() 
+                    && isResourceOwner(request.resource.data) 
+                    && request.resource.data.status == 'pending';
+      
+      // Vendors can update their own listings, but cannot change the status.
+      allow update: if isApprovedVendor() && isResourceOwner(resource.data) && !('status' in request.resource.data.diff(resource.data).affectedKeys());
+      allow delete: if isApprovedVendor() && isResourceOwner(resource.data);
+    }
+    
+    // --- Public Discovery & Other Rules ---
+    match /restaurants/{restaurantId} {
+      allow read: if true;
+      allow write: if false;
+    }
+    
+    match /inque_products/{productId} {
+      allow read: if true;
+      allow write: if false; 
+    }
+    
+    match /locations/{locationId} {
+      allow read, write: if true;
+    }
+
+    // --- Customer Support Rules ---
+    match /supportChats/{chatId} {
+      allow read, update: if isOwner(resource.data.userId) || isAdmin();
+      allow create: if isOwner(request.resource.data.userId);
+
+      match /messages/{messageId} {
+        allow read, write: if isOwner(get(/databases/$(database)/documents/supportChats/$(chatId)).data.userId) || isAdmin();
+      }
+    }
+  }
+}

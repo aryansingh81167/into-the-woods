@@ -1,0 +1,92 @@
+{
+  "smallPlant": {
+    "src": "https://picsum.photos/seed/small-fern/600/800",
+    "hint": "fern plant"
+  },
+  "mediumPlant": {
+    "src": "https://picsum.photos/seed/zz-plant/600/800",
+    "hint": "zz plant"
+  },
+  "largePlant": {
+    "src": "https://picsum.photos/seed/areca-palm/600/800",
+    "hint": "areca palm"
+  },
+  "hugePlant": {
+    "src": "https://picsum.photos/seed/bird-of-paradise-large/600/800",
+    "hint": "bird paradise"
+  },
+  "shopSets": {
+    "src": "https://picsum.photos/seed/plant-set/1600/800",
+    "hint": "living room"
+  },
+  "gifting": {
+    "src": "https://picsum.photos/seed/plant-gift/1200/600",
+    "hint": "plant gift"
+  },
+  "testimonials": [
+    {
+      "src": "https://picsum.photos/seed/plant-delivery-1/400/600",
+      "hint": "plant delivery"
+    },
+    {
+      "src": "https://picsum.photos/seed/plant-delivery-2/400/600",
+      "hint": "plant unboxing"
+    },
+    {
+      "src": "https://picsum.photos/seed/plant-delivery-3/400/600",
+      "hint": "houseplant pot"
+    },
+    {
+      "src": "https://picsum.photos/seed/plant-delivery-4/400/600",
+      "hint": "plant in box"
+    },
+    {
+      "src": "https://picsum.photos/seed/plant-delivery-5/400/600",
+      "hint": "potted plant"
+    },
+    {
+      "src": "https://picsum.photos/seed/plant-delivery-6/400/600",
+      "hint": "plant shelf"
+    },
+    {
+      "src": "https://picsum.photos/seed/plant-delivery-7/400/600",
+      "hint": "flower"
+    },
+    {
+      "src": "https://picsum.photos/seed/plant-delivery-8/400/600",
+      "hint": "plant care"
+    },
+    {
+      "src": "https://picsum.photos/seed/plant-delivery-9/400/600",
+      "hint": "plant care instructions"
+    }
+  ],
+  "sapling": {
+    "src": "https://picsum.photos/seed/sapling/400/400",
+    "hint": "sapling"
+  },
+  "aquarium": {
+    "src": "https://picsum.photos/seed/aquarium-plant/400/400",
+    "hint": "aquarium plant"
+  },
+  "terrarium": {
+    "src": "https://picsum.photos/seed/terrarium/400/400",
+    "hint": "terrarium"
+  },
+  "sculptures": {
+    "src": "https://picsum.photos/seed/garden-sculpture/400/400",
+    "hint": "garden sculpture"
+  },
+  "furniture": {
+    "src": "https://picsum.photos/seed/garden-furniture/400/400",
+    "hint": "garden furniture"
+  },
+  "fishes": {
+    "src": "https://picsum.photos/seed/aquarium-fish/400/400",
+    "hint": "aquarium fish"
+  },
+  "paintings": {
+    "src": "https://picsum.photos/seed/plant-painting/400/400",
+    "hint": "plant painting"
+  }
+}
