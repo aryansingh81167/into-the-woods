@@ -1,8 +1,8 @@
 export const firebaseConfig = {
-  "projectId": "into-the-woods-2p69s",
-  "appId": "1:263563920880:web:97ca0b7a3de388d0204935",
-  "apiKey": "AIzaSyAQZNtMN783xfWN7q8Jvm-OOX_oTeNrof0",
-  "authDomain": "into-the-woods-2p69s.firebaseapp.com",
-  "measurementId": "",
-  "messagingSenderId": "263563920880"
+  "projectId": process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  "appId": process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  "apiKey": process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  "authDomain": process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  "measurementId": process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID || "",
+  "messagingSenderId": process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID
 };
